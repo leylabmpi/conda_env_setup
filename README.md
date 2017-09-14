@@ -10,9 +10,12 @@ and setup of some basic conda environments:
 
 # Installation & setup
 
+
 ## Install miniconda & create conda environments
 
 `./miniconda_setup.sh`
+
+> Note: miniconda will be installed in the *parent* directory
 
 ## (optional) Install & configure RISE for creating Jupyter presentations
 
