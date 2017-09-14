@@ -3,10 +3,16 @@
 # RISE for presentations
 conda install -c damianavila82 rise
 
+
 ## RISE configure
+### nbconfig direcotry
+PARENT_DIR=$(dirname `pwd`)
+CONFIG_DIR=$PARENT_DIR"/miniconda3/etc/jupyter/nbconfig/"
+### editing config
 python - <<EOF
 from traitlets.config.manager import BaseJSONConfigManager
-path = "/ebio/abt3_projects/small_projects/nyoungblut/dev/data_analysis_workshops/miniconda3/etc/jupyter/nbconfig/"
+path = "$CONFIG_DIR"
+print("nbconfig path: {}".format(path))
 cm = BaseJSONConfigManager(config_dir=path)
 cm.update('livereveal', {
               'transition' : 'linear',
