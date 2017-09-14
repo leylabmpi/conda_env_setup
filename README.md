@@ -4,12 +4,18 @@ conda install & setup
 This repo includes scripts for installation of conda
 and setup of some basic conda environments:
 
-* py2 = python2
-* py3 = python3
+* `py2` = Python2 environment with QIIME
+* `py3` = Python3 environment 
+
+All environments include:
+
+* Jupyter
+* IRkernel 
+* tidyverse R packages
+* phyloseq R package
 
 
 # Installation & setup
-
 
 ## Install miniconda & create conda environments
 
