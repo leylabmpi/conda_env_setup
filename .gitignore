@@ -5,3 +5,4 @@ tmp/
 miniconda3/
 anaconda/
 data/
+.envrc

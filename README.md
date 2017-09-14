@@ -27,6 +27,18 @@ All environments include:
 
 `./RISE_setup.sh`
 
+## Adding conda to your PATH
+
+This assumes that you are using `direnv`.
+
+To create a .envrc file:
+
+`./envrc_setup.sh`
+
+Edit the .envrc file if needed:
+
+`nano .envrc`
+
 
 # Renaming environments
 
