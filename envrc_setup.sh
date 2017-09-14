@@ -12,5 +12,8 @@ echo "# Uncomment a 'use conda ...' line below to use a particular conda environ
 echo >> $ENVRC
 echo "#use conda py3" >> $ENVRC
 echo "#use conda py2" >> $ENVRC
+echo >> $ENVRC
+echo "# group permissions for new directories" >> $ENVRC
+echo "umask 0002" >> $ENVRC
 
 echo ".envrc file created at: "$ENVRC
