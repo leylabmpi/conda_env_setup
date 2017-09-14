@@ -8,6 +8,17 @@ and setup of some basic conda environments:
 * py3 = python3
 
 
+# Installation & setup
+
+## Install miniconda & create conda environments
+
+`./miniconda_setup.sh`
+
+## (optional) Install & configure RISE for creating Jupyter presentations
+
+`./RISE_setup.sh`
+
+
 # Renaming environments
 
 You can't rename, but you can clone (copy) and then delete the old environment.
