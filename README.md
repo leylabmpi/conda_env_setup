@@ -2,7 +2,7 @@ conda install & setup
 =====================
 
 This repo includes scripts for installation of conda
-and setup of some basic conda environments:
+and setup of some basic conda environments into a project directory:
 
 * `py2` = Python2 environment with QIIME
 * `py3` = Python3 environment 
@@ -29,11 +29,9 @@ Move into the repo directory:
 
 `./miniconda_setup.sh`
 
-> Note: miniconda will be installed in the *parent* directory
-
-## (optional) Install & configure RISE for creating Jupyter presentations
-
-`./RISE_setup.sh`
+> Note: miniconda will be installed in the *parent* directory, so make sure
+you are cloning this repository into your project directory
+(whichever project you need to setup conda for. 
 
 ## Adding conda to your PATH
 
@@ -46,6 +44,12 @@ To create a .envrc file:
 Edit the .envrc file if needed:
 
 `nano .envrc`
+
+## (optional) Install & configure RISE for creating Jupyter presentations
+
+This is only needed if you'd like to make interactive presentations with Jupyter Notebooks.
+
+`./RISE_setup.sh`
 
 
 # Renaming environments
