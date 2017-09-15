@@ -17,6 +17,14 @@ All environments include:
 
 # Installation & setup
 
+First clone the repo (if you are viewing this on GitHub/GitLab):
+
+`git clone https://github.com/leylabmpi/conda_env_setup.git`
+
+Move into the repo directory:
+
+`cd conda_env_setup`
+
 ## Install miniconda & create conda environments
 
 `./miniconda_setup.sh`
@@ -50,3 +58,8 @@ Example changing "py3" environment to "PROJECT_POOP":
 conda create --name PROJECT_POOP --clone py3
 conda remove --name py3 --all
 ```
+
+# Creating & managing environments
+
+See [Confluence](http://confluence.eb.local/display/LDU/conda+environment+notes)
+
