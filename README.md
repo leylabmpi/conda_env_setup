@@ -33,6 +33,34 @@ Move into the repo directory:
 you are cloning this repository into your project directory
 (whichever project you need to setup conda for. 
 
+## Optional items to install
+
+### Install phyloseq R package
+
+The phyloseq R package is very useful for microbiome data analysis in R
+
+For py2 environment:
+
+`source activate py2`
+
+`Rscript phyloseq_install.R`
+
+For py3 environment:
+
+`source activate py3`
+
+`Rscript phyloseq_install.R`
+
+
+### Install & configure RISE for creating Jupyter presentations
+
+This is only needed if you'd like to make interactive presentations with Jupyter Notebooks.
+
+`source deactivate`
+
+`./RISE_setup.sh`
+
+
 ## Adding conda to your PATH
 
 This assumes that you are using `direnv`.
@@ -45,11 +73,6 @@ Edit the .envrc file if needed:
 
 `nano .envrc`
 
-## (optional) Install & configure RISE for creating Jupyter presentations
-
-This is only needed if you'd like to make interactive presentations with Jupyter Notebooks.
-
-`./RISE_setup.sh`
 
 
 # Renaming environments

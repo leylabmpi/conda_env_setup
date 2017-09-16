@@ -32,6 +32,7 @@ conda install -y jupyter
 ## nb_conda
 conda install -y nb_conda
 
+## notebook extensions
 ### this next part is needed to avoid "Jupter already running" error
 pip install jupyter_contrib_nbextensions
 jupyter contrib nbextensions install --sys-prefix --skip-running-check
@@ -39,42 +40,42 @@ jupyter contrib nbextensions install --sys-prefix --skip-running-check
 # installing kernels
 
 ## adding kernels for conda environments
-
 conda install -y -n py2 ipykernel nb_conda
 conda install -y -n py3 ipykernel nb_conda
 
-## installing R kernel
-
+## installing rpy2
 conda install -y -c r rpy2
 conda install -y -n py2 -c r rpy2
 conda install -y -n py3 -c r rpy2
 
+## installing irkernel
 conda install -y -c r r-irkernel
 conda install -y -n py2 -c r r-irkernel
 conda install -y -n py3 -c r r-irkernel
 
+
 # installing env-specific software
-
 ## installing pandas
-
 conda install -y -n py2 pandas
 conda install -y -n py3 pandas
 
 ## installing qiime
-
 conda install -y -n py2 -c bioconda qiime
 
 # installing R packages
-
-## tidyverse
-source activate py2
-Rscript tidyverse_install.R
-source activate py3
+## py2
+source acitvate py2
+Rscript irkernel_install.R
 Rscript tidyverse_install.R
 
-## phyloseq
-source activate py2
-Rscript phyloseq_install.R
-source activate py3
-Rscript phyloseq_install.R
+source acitvate py3
+Rscript irkernel_install.R
+Rscript tidyverse_install.R
 
+## nbextension for each environment (in case notebook is started with particular environment)
+source activate py2
+pip install jupyter_contrib_nbextensions
+jupyter contrib nbextensions install --sys-prefix --skip-running-check
+source activate py3
+pip install jupyter_contrib_nbextensions
+jupyter contrib nbextensions install --sys-prefix --skip-running-check
