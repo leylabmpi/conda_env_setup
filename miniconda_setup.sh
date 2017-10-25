@@ -60,7 +60,11 @@ conda install -y -n py2 pandas
 conda install -y -n py3 pandas
 
 ## installing qiime
+### QIIME v1
 conda install -y -n py2 -c bioconda qiime
+### QIIME v2
+conda install -y -n py3 -c qiime2 qiime2
+
 
 # installing R packages
 ## py2
