@@ -6,3 +6,4 @@ miniconda3/
 anaconda/
 data/
 .envrc
+screenlog.*

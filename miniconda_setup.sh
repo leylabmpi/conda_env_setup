@@ -37,8 +37,13 @@ conda install -y nb_conda
 pip install jupyter_contrib_nbextensions
 jupyter contrib nbextensions install --sys-prefix --skip-running-check
 
-# installing kernels
+# installing R
+conda install -y -c r r-base
+conda install -n py2 -y -c r r-base
+conda install -n py3 -y -c r r-base
 
+
+# installing kernels
 ## adding kernels for conda environments
 conda install -y -n py2 ipykernel nb_conda
 conda install -y -n py3 ipykernel nb_conda
@@ -67,13 +72,14 @@ conda install -y -n py3 -c qiime2 qiime2
 
 
 # installing R packages
-## py2
-source acitvate py2
-Rscript irkernel_install.R
 Rscript tidyverse_install.R
-
-source acitvate py3
-Rscript irkernel_install.R
+## py2
+source activate py2
+#Rscript irkernel_install.R
+Rscript tidyverse_install.R
+## py3
+source activate py3
+#Rscript irkernel_install.R
 Rscript tidyverse_install.R
 
 ## nbextension for each environment (in case notebook is started with particular environment)
@@ -83,3 +89,5 @@ jupyter contrib nbextensions install --sys-prefix --skip-running-check
 source activate py3
 pip install jupyter_contrib_nbextensions
 jupyter contrib nbextensions install --sys-prefix --skip-running-check
+
+
