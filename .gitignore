@@ -7,3 +7,4 @@ anaconda/
 data/
 .envrc
 screenlog.*
+*.log

@@ -13,8 +13,8 @@ All environments include:
 
 * Jupyter
 * IRkernel 
-* tidyverse R packages
-* phyloseq R package
+* [optional] tidyverse R packages
+* [optional] phyloseq R package
 
 
 # Installation & setup
