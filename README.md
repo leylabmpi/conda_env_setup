@@ -1,13 +1,15 @@
 conda install & setup
 =====================
 
-> version = 0.1.0
+> version: 0.2.0
+> authors: Nick Youngblut, William Walters
+
 
 This repo includes scripts for installation of conda
 and setup of some basic conda environments into a project directory:
 
-* `py2` = Python2 environment with QIIME v1
-* `py3` = Python3 environment with QIIME v2
+* `py2` = Python v2 environment
+* `py3` = Python v3 environment
 
 All environments include:
 
@@ -15,6 +17,15 @@ All environments include:
 * IRkernel 
 * [optional] tidyverse R packages
 * [optional] phyloseq R package
+
+You can also create separate environments for QIIME1 & QIIME2 
+
+These environments provide a starting point for bioinformatics analysis.
+You will likely need to install other software into these environments.
+
+> WARNING: It is recommended to always install software into paritcular environments,
+not just the "root" conda environment. This way, you can isolate software, and you
+will have less dependency issues. 
 
 
 # Installation & setup
@@ -37,9 +48,19 @@ you are cloning this repository into your project directory
 
 ## Optional items to install
 
-### Install phyloseq R package
+### Creating QIIME (v1 & v2) environments
 
-The phyloseq R package is very useful for microbiome data analysis in R
+Especially for QIIME2, it is recommended to create separate environments just for that software.
+This will prevent software version issues if you want to install other software.
+
+To create the environments:
+
+`bash qiime_env_setup.sh`
+
+
+### Install phyloseq & microbiome R packages
+
+The phyloseq (& microbiome) R packages are very useful for microbiome data analysis in R
 
 For py2 environment:
 

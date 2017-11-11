@@ -5,6 +5,8 @@ tmp/
 miniconda3/
 anaconda/
 data/
+archive/
 .envrc
 screenlog.*
 *.log
+.travis*

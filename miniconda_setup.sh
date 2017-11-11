@@ -1,21 +1,25 @@
 #!/bin/bash
 # miniconda install & setup
 
-
+# variables 
+VERSION=0.2.0
 LOG="miniconda_setup.log"
-echo ""
-echo "NOTE: install log written to: "$LOG
-echo ""
-echo "#-- miniconda_setup.sh log --#" > $LOG
-
+CONDA_URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 # paraent directory (install directory)
 PARENT_DIR=$(dirname `pwd`)
 INSTALL_DIR=$PARENT_DIR"/miniconda3"
 CONDA_PATH=$INSTALL_DIR"/bin"
 
+# preamble
+echo ""
+echo "NOTE: install log written to: "$LOG
+echo ""
+echo "#-- miniconda_setup.sh log --#" > $LOG
+echo "# miniconda_setup version: "$VERSION | tee -a $LOG
+
 # download
 echo "# Downloading miniconda" | tee -a $LOG
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget -nv $CONDA_URL 2>> $LOG 1>&2
 
 # install
 echo "# Running miniconda installer" | tee -a $LOG
@@ -35,6 +39,19 @@ echo "# Creating conda environemnts" | tee -a $LOG
 conda create -q -y -n py3 python=3 2>> $LOG 1>&2
 conda create -q -y -n py2 python=2 2>> $LOG 1>&2
 
+echo "# Adding gcc compilers because they are missing in conda" | tee -a $LOG
+# conda install -q -y zlib 
+conda install -q -y gcc_linux-64 2>> $LOG 1>&2
+conda install -q -y gxx_linux-64 2>> $LOG 1>&2
+conda install -q -y gfortran_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py2 gcc_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py2 gxx_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py2 gfortran_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py3 gcc_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py3 gxx_linux-64 2>> $LOG 1>&2
+conda install -q -y -n py3 gfortran_linux-64 2>> $LOG 1>&2
+
+
 echo "# Installing jupyter" | tee -a $LOG
 conda install -q -y jupyter 2>> $LOG 1>&2
 
@@ -42,7 +59,7 @@ echo "# Installing nb_conda" | tee -a $LOG
 conda install -q -y nb_conda 2>> $LOG 1>&2
 
 echo "# Installing  notebook extensions" | tee -a $LOG
-echo "#> this next part is needed to avoid 'Jupter already running' error"
+echo "## NOTE: This next part is needed to avoid 'Jupter already running' error"
 pip install jupyter_contrib_nbextensions 2>> $LOG 1>&2
 jupyter contrib nbextensions install --sys-prefix --skip-running-check 2>> $LOG 1>&2
 
@@ -66,21 +83,19 @@ conda install -q -y -c r r-irkernel 2>> $LOG 1>&2
 conda install -q -y -n py2 -c r r-irkernel 2>> $LOG 1>&2
 conda install -q -y -n py3 -c r r-irkernel 2>> $LOG 1>&2
 
-
 echo "# Installing env-specific software" | tee -a $LOG
 echo "## Installing pandas" | tee -a $LOG
 conda install -q -y -n py2 pandas 2>> $LOG 1>&2
 conda install -q -y -n py3 pandas 2>> $LOG 1>&2
 
-echo "## Installing QIIME" | tee -a $LOG
-echo "### Installing QIIME v1 in py2 env" | tee -a $LOG
-conda install -q -y -n py2 -c bioconda qiime 2>> $LOG 1>&2
-echo "### Installing QIIME v2 in py3 env" | tee -a $LOG
-conda install -q -y -n py3 -c qiime2 qiime2 2>> $LOG 1>&2
-
+#echo "# Installing R packages via conda" | tee -a $LOG
+#echo "## Installing R packages in py2 env" | tee -a $LOG
+#conda install -q -y -n py2 -c r r-tidyverse 2>> $LOG 1>&2
+#echo "## Installing R packages in py3 env" | tee -a $LOG
+#conda install -q -y -n py3 -c r r-tidyverse 2>> $LOG 1>&2
 
 echo "# Installing R packages via install.packages()" | tee -a $LOG
-Rscript tidyverse_install.R 2>> $LOG 1>&2
+#Rscript tidyverse_install.R 2>> $LOG 1>&2
 echo "## Installing R packages in py2 env" | tee -a $LOG
 source activate py2
 #Rscript irkernel_install.R
@@ -91,7 +106,7 @@ source activate py3
 Rscript tidyverse_install.R 2>> $LOG 1>&2
 
 echo "## Installing nbextension for each environment" | tee -a $LOG
-echo "##> This is in case notebook is started with particular environment" | tee -a $LOG
+echo "## Note: This is in case notebook is started with particular environment" | tee -a $LOG
 source activate py2
 pip install jupyter_contrib_nbextensions 2>> $LOG 1>&2
 jupyter contrib nbextensions install --sys-prefix --skip-running-check 2>> $LOG 1>&2

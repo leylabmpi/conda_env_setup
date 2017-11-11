@@ -1,2 +1,5 @@
 source("https://bioconductor.org/biocLite.R")
+biocLite("igraph")
 biocLite("phyloseq")
+useDevel()
+biocLite("microbiome")
