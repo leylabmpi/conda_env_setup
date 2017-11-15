@@ -35,6 +35,7 @@ touch $INSTALL_DIR"/DO_NOT_BACKUP_THIS_FOLDER" 2>> $LOG 1>&2
 echo "# Adding conda to PATH" | tee -a $LOG
 export PATH=$CONDA_PATH:$PATH
 
+
 echo "# Creating conda environemnts" | tee -a $LOG
 conda create -q -y -n py3 python=3 2>> $LOG 1>&2
 conda create -q -y -n py2 python=2 2>> $LOG 1>&2
@@ -87,12 +88,6 @@ echo "# Installing env-specific software" | tee -a $LOG
 echo "## Installing pandas" | tee -a $LOG
 conda install -q -y -n py2 pandas 2>> $LOG 1>&2
 conda install -q -y -n py3 pandas 2>> $LOG 1>&2
-
-#echo "# Installing R packages via conda" | tee -a $LOG
-#echo "## Installing R packages in py2 env" | tee -a $LOG
-#conda install -q -y -n py2 -c r r-tidyverse 2>> $LOG 1>&2
-#echo "## Installing R packages in py3 env" | tee -a $LOG
-#conda install -q -y -n py3 -c r r-tidyverse 2>> $LOG 1>&2
 
 echo "# Installing R packages via install.packages()" | tee -a $LOG
 #Rscript tidyverse_install.R 2>> $LOG 1>&2
