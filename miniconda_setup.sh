@@ -96,6 +96,13 @@ echo "## Installing pandas" | tee -a $LOG
 conda install -q -y -n py2 pandas 2>> $LOG 1>&2
 conda install -q -y -n py3 pandas 2>> $LOG 1>&2
 
+# final conda update
+echo "# Final conda update" | tee -a $LOG
+conda update --all -q -y 2>> $LOG 1>&2
+conda update --all -q -y -n py2 2>> $LOG 1>&2
+conda update --all -q -y -n py3 2>> $LOG 1>&2
+
+# nbextension
 echo "## Installing nbextension for each environment" | tee -a $LOG
 echo "## Note: This is in case notebook is started with particular environment" | tee -a $LOG
 source activate py2
@@ -105,11 +112,6 @@ source activate py3
 pip install jupyter_contrib_nbextensions 2>> $LOG 1>&2
 jupyter contrib nbextensions install --sys-prefix --skip-running-check 2>> $LOG 1>&2
 
-# final conda update
-echo "# Final conda update" | tee -a $LOG
-conda update --all -q -y 2>> $LOG 1>&2
-conda update --all -q -y -n py2 2>> $LOG 1>&2
-conda update --all -q -y -n py3 2>> $LOG 1>&2
 
 
 
