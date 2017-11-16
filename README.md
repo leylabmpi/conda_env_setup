@@ -58,21 +58,16 @@ To create the environments:
 `bash qiime_env_setup.sh`
 
 
-### Install phyloseq & microbiome R packages
+### Install phyloseq R package
 
-The phyloseq (& microbiome) R packages are very useful for microbiome data analysis in R
+The phyloseq R package is very useful for microbiome data analysis in R
 
-For py2 environment:
+Install phyloseq via conda:
 
-`source activate py2`
+`conda install -n MY_CONDA_ENV -c bioconda bioconductor-phyloseq`
 
-`Rscript phyloseq_install.R`
-
-For py3 environment:
-
-`source activate py3`
-
-`Rscript phyloseq_install.R`
+> Make sure to change "MY_CONDA_ENV" to the particular conda environment that you want to install
+it into (eg., "-n py3")
 
 
 ### Install & configure RISE for creating Jupyter presentations
