@@ -58,6 +58,22 @@ To create the environments:
 `bash qiime_env_setup.sh`
 
 
+### Install tidyverse packages
+
+You can install the entire tidyverse with:
+
+`conda install -n MY_CONDA_ENV r-tidyverse`
+
+> Make sure to change "MY_CONDA_ENV" to the particular conda environment that you want to install
+it into (eg., "-n py3")
+
+If you don't need all of the packages, then use something like the following:
+
+`conda install -n MY_CONDA_ENV r-ggplot2 r-dplyr r-tidyr`
+
+> Make sure to change "MY_CONDA_ENV" to the particular conda environment that you want to install
+it into (eg., "-n py3")
+
 ### Install phyloseq R package
 
 The phyloseq R package is very useful for microbiome data analysis in R
