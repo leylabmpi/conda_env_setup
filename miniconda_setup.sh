@@ -2,7 +2,7 @@
 # miniconda install & setup
 
 # variables 
-VERSION=0.2.0
+VERSION=0.3.0
 LOG="miniconda_setup.log"
 CONDA_URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 # paraent directory (install directory)
@@ -35,7 +35,14 @@ touch $INSTALL_DIR"/DO_NOT_BACKUP_THIS_FOLDER" 2>> $LOG 1>&2
 echo "# Adding conda to PATH" | tee -a $LOG
 export PATH=$CONDA_PATH:$PATH
 
+# adding channels
+echo "# Adding conda channels" | tee -a $LOG
+conda config --add channels r
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
 
+# creating conda envs
 echo "# Creating conda environemnts" | tee -a $LOG
 conda create -q -y -n py3 python=3 2>> $LOG 1>&2
 conda create -q -y -n py2 python=2 2>> $LOG 1>&2
@@ -70,35 +77,24 @@ conda install -q -y -n py2 ipykernel nb_conda 2>> $LOG 1>&2
 conda install -q -y -n py3 ipykernel nb_conda 2>> $LOG 1>&2
 
 echo "# Installing R-base" | tee -a $LOG
-conda install -q -y -c r r-base 2>> $LOG 1>&2
-conda install -q -y -n py2 -c r r-base 2>> $LOG 1>&2
-conda install -q -y -n py3 -c r r-base 2>> $LOG 1>&2
+conda install -q -y r-base 2>> $LOG 1>&2
+conda install -q -y -n py2 r-base 2>> $LOG 1>&2
+conda install -q -y -n py3 r-base 2>> $LOG 1>&2
 
 echo "## Installing rpy2" | tee -a $LOG
-conda install -q -y -c r rpy2 2>> $LOG 1>&2
-conda install -q -y -n py2 -c r rpy2 2>> $LOG 1>&2
-conda install -q -y -n py3 -c r rpy2 2>> $LOG 1>&2
+conda install -q -y rpy2 2>> $LOG 1>&2
+conda install -q -y -n py2 rpy2 2>> $LOG 1>&2
+conda install -q -y -n py3 rpy2 2>> $LOG 1>&2
 
 echo "## Installing irkernel" | tee -a $LOG
-conda install -q -y -c r r-irkernel 2>> $LOG 1>&2
-conda install -q -y -n py2 -c r r-irkernel 2>> $LOG 1>&2
-conda install -q -y -n py3 -c r r-irkernel 2>> $LOG 1>&2
+conda install -q -y r-irkernel 2>> $LOG 1>&2
+conda install -q -y -n py2 r-irkernel 2>> $LOG 1>&2
+conda install -q -y -n py3 r-irkernel 2>> $LOG 1>&2
 
 echo "# Installing env-specific software" | tee -a $LOG
 echo "## Installing pandas" | tee -a $LOG
 conda install -q -y -n py2 pandas 2>> $LOG 1>&2
 conda install -q -y -n py3 pandas 2>> $LOG 1>&2
-
-echo "# Installing R packages via install.packages()" | tee -a $LOG
-#Rscript tidyverse_install.R 2>> $LOG 1>&2
-echo "## Installing R packages in py2 env" | tee -a $LOG
-source activate py2
-#Rscript irkernel_install.R
-Rscript tidyverse_install.R 2>> $LOG 1>&2
-echo "## Installing R packages in py3 env" | tee -a $LOG
-source activate py3
-#Rscript irkernel_install.R
-Rscript tidyverse_install.R 2>> $LOG 1>&2
 
 echo "## Installing nbextension for each environment" | tee -a $LOG
 echo "## Note: This is in case notebook is started with particular environment" | tee -a $LOG
@@ -109,4 +105,21 @@ source activate py3
 pip install jupyter_contrib_nbextensions 2>> $LOG 1>&2
 jupyter contrib nbextensions install --sys-prefix --skip-running-check 2>> $LOG 1>&2
 
+# final conda update
+echo "# Final conda update" | tee -a $LOG
+conda update --all -q -y 2>> $LOG 1>&2
+conda update --all -q -y -n py2 2>> $LOG 1>&2
+conda update --all -q -y -n py3 2>> $LOG 1>&2
 
+
+
+# echo "# Installing R packages via install.packages()" | tee -a $LOG
+# #Rscript tidyverse_install.R 2>> $LOG 1>&2
+# echo "## Installing R packages in py2 env" | tee -a $LOG
+# source activate py2
+# #Rscript irkernel_install.R
+# Rscript tidyverse_install.R 2>> $LOG 1>&2
+# echo "## Installing R packages in py3 env" | tee -a $LOG
+# source activate py3
+# #Rscript irkernel_install.R
+# Rscript tidyverse_install.R 2>> $LOG 1>&2
