@@ -47,17 +47,17 @@ echo "# Creating conda environemnts" | tee -a $LOG
 conda create -q -y -n py3 python=3 2>> $LOG 1>&2
 conda create -q -y -n py2 python=2 2>> $LOG 1>&2
 
-echo "# Adding gcc compilers because they are missing in conda" | tee -a $LOG
-# conda install -q -y zlib 
-conda install -q -y gcc_linux-64 2>> $LOG 1>&2
-conda install -q -y gxx_linux-64 2>> $LOG 1>&2
-conda install -q -y gfortran_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py2 gcc_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py2 gxx_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py2 gfortran_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py3 gcc_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py3 gxx_linux-64 2>> $LOG 1>&2
-conda install -q -y -n py3 gfortran_linux-64 2>> $LOG 1>&2
+# adding compilers
+#echo "# Adding gcc compilers because they are missing in conda" | tee -a $LOG
+# conda install -q -y gcc_linux-64 2>> $LOG 1>&2
+# conda install -q -y gxx_linux-64 2>> $LOG 1>&2
+# conda install -q -y gfortran_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py2 gcc_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py2 gxx_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py2 gfortran_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py3 gcc_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py3 gxx_linux-64 2>> $LOG 1>&2
+# conda install -q -y -n py3 gfortran_linux-64 2>> $LOG 1>&2
 
 
 echo "# Installing jupyter" | tee -a $LOG
@@ -82,9 +82,9 @@ conda install -q -y -n py2 r-base 2>> $LOG 1>&2
 conda install -q -y -n py3 r-base 2>> $LOG 1>&2
 
 echo "## Installing rpy2" | tee -a $LOG
-conda install -q -y rpy2 2>> $LOG 1>&2
-conda install -q -y -n py2 rpy2 2>> $LOG 1>&2
-conda install -q -y -n py3 rpy2 2>> $LOG 1>&2
+conda install -q -y -c conda-forge rpy2 2>> $LOG 1>&2
+conda install -q -y -n py2 -c conda-forge rpy2 2>> $LOG 1>&2
+conda install -q -y -n py3 -c conda-forge rpy2 2>> $LOG 1>&2
 
 echo "## Installing irkernel" | tee -a $LOG
 conda install -q -y r-irkernel 2>> $LOG 1>&2
